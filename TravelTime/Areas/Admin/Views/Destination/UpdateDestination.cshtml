@@ -1,0 +1,83 @@
+﻿@model Destination
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<h1>Rota Güncelleme Sayfası</h1>
+<form method="post" enctype="multipart/form-data">
+    @Html.HiddenFor(x=>x.DestinationID)
+    <input type="hidden" name="Id" value="@Model.DestinationID" />
+    <div class="form-group">
+        @Html.Label("Şehir")
+        <input type="text" asp-for="City" class="form-control" />
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.Label("Gün Gece")
+        <input type="text" asp-for="DayNight" class="form-control" />
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.Label("Fiyat")
+        <input type="text" asp-for="Price" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Ana Görsel")
+        <div class="col-md-10">
+            <input type="hidden" name="Image" value="@Model.Image" />
+            <img src="~/UserImages/@Model.Image" width="80" />
+            <input type="file" name="file" value="" />
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Kapasite")
+        <input type="text" asp-for="Capacity" class="form-control" />
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.Label("Kapak Görseli")
+        <div class="col-md-10">
+            <input type="hidden" name="CoverImage" value="@Model.CoverImage" />
+            <img src="~/UserImages/@Model.CoverImage" width="80" />
+            <input type="file" name="file2" value="" />
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.Label("Görsel 2")
+                <div class="col-md-10">
+            <input type="hidden" name="Image2" value="@Model.Image2" />
+            <img src="~/UserImages/@Model.Image2" width="80" />
+            <input type="file" name="file3" value="" />
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Detay 1")
+        <textarea cols="30" rows="5" class="form-control" asp-for="Details1"></textarea>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Detay 2")
+        <textarea cols="30" rows="5" class="form-control" asp-for="Details2"></textarea>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Rehber ID")
+        <input type="text" asp-for="GuideID" class="form-control" />
+    </div>
+
+    <button class="btn btn-outline-primary">Güncelle</button>
+</form>
+
+

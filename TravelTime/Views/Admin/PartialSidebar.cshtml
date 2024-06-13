@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Menü Tasarımı</title>
+    <!-- jQuery'yi yükleyin -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Ana menü stili */
+        .menu-inner {
+            list-style: none;
+            padding: 0;
+            width: 300px; /* Menü genişliği */
+            background-color: white; /* Menü arka plan rengi beyaz */
+            color: #333; /* Menü metin rengi koyu gri */
+            font-family: Arial, sans-serif;
+            border: 1px solid #ccc; /* Menü sınırları */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Menü gölgesi */
+        }
+
+        .menu-item {
+            border-bottom: 1px solid #eee; /* Menü öğeleri arasında hafif bir çizgi */
+            position: relative; /* Sürgülü menü için konumlandırma */
+        }
+
+        .menu-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* İkonları sağa yasla */
+            padding: 12px 20px;
+            color: #333; /* Menü metin rengi */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer; /* Menü öğeleri tıklanabilir olsun */
+        }
+
+            .menu-link:hover {
+                background-color: #fde4e6; /* Üzerine gelindiğinde kırmızıya dönük pembe */
+                color: #d9534f; /* Üzerine gelindiğinde koyu kırmızı metin rengi */
+            }
+
+        .menu-icon {
+            margin-right: 10px;
+            color: #d9534f; /* İkonların kırmızıya dönük pembe rengi */
+        }
+
+        .submenu {
+            display: none; /* Başlangıçta görünmez */
+            padding-left: 20px; /* Ana menüden biraz içeride */
+            background-color: #fde4e6; /* Alt menü arka plan rengi kırmızıya dönük pembe */
+            color: #d9534f; /* Alt menü metin rengi */
+        }
+
+            .submenu .menu-item {
+                border: none; /* Alt menü öğeleri arasında çizgi yok */
+            }
+
+            .submenu .menu-link {
+                padding: 10px 20px; /* Alt menü içeriği */
+                color: #d9534f; /* Alt menü metin rengi */
+            }
+
+                .submenu .menu-link:hover {
+                    background-color: #fbd3d5; /* Alt menü öğelerinin üzerine gelindiğinde hafif pembe */
+                    color: #d9534f; /* Alt menü metin rengi değişmeden kalır */
+                }
+
+        .menu-item.has-submenu .submenu-toggle:after {
+            content: "▶";
+            margin-left: auto;
+            color: #d9534f; /* Alt menü okları kırmızıya dönük pembe */
+        }
+
+        .menu-item.has-submenu.active .submenu-toggle:after {
+            content: "▼";
+        }
+
+        .menu-item.has-submenu.active .submenu {
+            display: block; /* Aktif menülerin altındaki alt menüler görünür */
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="menu-inner">
+        <!-- Dashboard -->
+        <li class="menu-item">
+            <a href="/admin/dashboard/index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="/admin/profile/index" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-edit"></i>
+                <span>Profil Ayarları</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="/admin/comment/index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-comment"></i>
+                <span>Yorumlar</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="/admin/destination/index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-car"></i>
+                <span>Rotalar</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="/admin/user/index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <span>Misafirler</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="/admin/contactUs/index/" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-message-alt"></i>
+                <span>Mesajlar</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="/admin/reservation/index/" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-restaurant"></i>
+                <span>Rezervasyonlar</span>
+            </a>
+        </li>
+        <li class="menu-item has-submenu">
+            <div class="menu-link submenu-toggle">
+                <i class="menu-icon tf-icons bx bx-key"></i>
+                <span>Yönetim</span>
+            </div>
+            <ul class="submenu">
+                <li class="menu-item">
+                    <a href="/admin/guide/index" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-help-circle"></i>
+                        <span>Rehberlerimiz</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/admin/role/index/" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-key"></i>
+                        <span>Rol İşlemleri</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/admin/announcement/index" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-notification"></i>
+                        <span>Duyurular</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/admin/about/index" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-album"></i>
+                        <span>Hakkımızda</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item has-submenu">
+            <div class="menu-link submenu-toggle">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <span>İletişim</span>
+            </div>
+            <ul class="submenu">
+                <li class="menu-item">
+                    <a href="/admin/newsletter/index" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-envelope"></i>
+                        <span>Abone Olanlar</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/admin/mail/index/" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-mail-send"></i>
+                        <span>Mail Gönder</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/admin/contactUs/index/" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-message-alt"></i>
+                        <span>Mesajlar</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item has-submenu">
+            <div class="menu-link submenu-toggle">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <span>Raporlar</span>
+            </div>
+            <ul class="submenu">
+                <li class="menu-item">
+                    <a href="/pdfreport/index/" class="menu-link">
+                        <i class="menu-icon tf-icons bx bxs-file-pdf"></i>
+                        <span>Pdf Raporları</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/excel/index/" class="menu-link">
+                        <i class="menu-icon tf-icons bx bxs-report"></i>
+                        <span>Excel Raporları</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+
+        <!-- jQuery kodları -->
+    <script>
+        $(document).ready(function () {
+            // Ana menü öğesine tıklama olayını tanımlayın
+            $('.submenu-toggle').on('click', function (e) {
+                e.preventDefault();
+
+                // Tıklanan öğenin ebeveyn menü öğesini bulun
+                var parentItem = $(this).closest('.menu-item');
+
+                // Diğer tüm menülerin kapanmasını sağlamak için diğer açık menüleri kapatın
+                $('.menu-item').not(parentItem).removeClass('active');
+                $('.submenu').not(parentItem.find('.submenu')).slideUp();
+
+                // Mevcut menü öğesini aç/kapat
+                parentItem.toggleClass('active');
+                parentItem.find('.submenu').slideToggle();
+            });
+        });
+    </script>
+
+</body>
+</html>

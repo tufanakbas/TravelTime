@@ -1,0 +1,47 @@
+﻿@model PaymentViewModel
+@{
+    ViewData["Title"] = "Payment";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Ödeme Sayfası</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p class="card-text">Ödeme bilgilerinizi bu sayfadan girerek işlemi tamamlayabilirsiniz.</p>
+                    <form method="post">
+                        @Html.Label("Kart Sahibi Adı")
+                        <input type="text" asp-for="CardHolderName" class="form-control" />
+                        <br />
+                        @Html.Label("Kart Numarası")
+                        <input type="text" asp-for="CardNumber" class="form-control" />
+                        <br />
+                        @Html.Label("Son Kullanma Tarihi")
+                        <input type="text" asp-for="ExpirationDate" class="form-control" />
+                        <br />
+                        @Html.Label("CVV")
+                        <input type="text" asp-for="CVV" class="form-control" />
+                        <br />
+                        @Html.Label("Ödeme Miktarı")
+                        <input type="text" asp-for="Amount" class="form-control" value="120000"/>
+                        <br />
+                        <button class="btn btn-primary">Ödemeyi Tamamla</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
